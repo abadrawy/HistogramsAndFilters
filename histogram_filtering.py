@@ -15,7 +15,7 @@ from time import time
 
 
 def hist_camMan():
-    camMan = cv2.imread('cameraman.png', cv2.IMREAD_GRAYSCALE)
+    camMan = cv2.imread('images/cameraman.png', cv2.IMREAD_GRAYSCALE)
     hist,bins = np.histogram(camMan,256,[0,256])
     c_hist=np.cumsum(hist)
     fig = plt.figure(frameon=False,figsize=(10.24,5.12),dpi=100)
@@ -25,10 +25,10 @@ def hist_camMan():
     plt.bar(bins[:-1], c_hist/(600000/16000), color='grey') #600000 (600000/1600)
     plt.bar(bins[:-1], hist, color='black') #1600
     plt.title('Histogram Normal and cumlative')
-    fig.savefig("cammanHis.png")
+    fig.savefig("histograms/cammanHis.png")
     plt.show()
 def hist_batMan():
-    batMan = cv2.imread('bat.png', cv2.IMREAD_GRAYSCALE)
+    batMan = cv2.imread('images/bat.png', cv2.IMREAD_GRAYSCALE)
     hist,bins = np.histogram(batMan,256,[0,256])
     c_hist=np.cumsum(hist)
     fig = plt.figure(frameon=False,figsize=(10.24,5.12),dpi=100)
@@ -38,12 +38,12 @@ def hist_batMan():
     plt.bar(bins[:-1], c_hist/(600000/35000), color='grey') #600000
     plt.bar(bins[:-1], hist, color='black') #35000
     plt.title('Histogram Normal and cumlative')
-    fig.savefig("batHis.png")
+    fig.savefig("histograms/batHis.png")
     plt.show()
 
 
 def hist_fog():
-    fog = cv2.imread('fog.png', cv2.IMREAD_GRAYSCALE)
+    fog = cv2.imread('images/fog.png', cv2.IMREAD_GRAYSCALE)
     hist,bins = np.histogram(fog,256,[0,256])
     c_hist=np.cumsum(hist)
     fig = plt.figure(frameon=False,figsize=(10.24,5.12),dpi=100)
@@ -53,11 +53,11 @@ def hist_fog():
     plt.bar(bins[:-1], c_hist/(1200000/40000), color='grey') 
     plt.bar(bins[:-1], hist, color='black') 
     plt.title('Histogram Normal and cumlative')   
-    fig.savefig("fogHis.png")
+    fig.savefig("histograms/fogHis.png")
     plt.show()
     
 def hist_fogNoise():
-    fogNoise = cv2.imread('fognoise.png', cv2.IMREAD_GRAYSCALE)
+    fogNoise = cv2.imread('images/fognoise.png', cv2.IMREAD_GRAYSCALE)
     hist,bins = np.histogram(fogNoise,256,[0,256])
     c_hist=np.cumsum(hist)
     fig = plt.figure(frameon=False,figsize=(10.24,5.12),dpi=100)
@@ -67,7 +67,7 @@ def hist_fogNoise():
     plt.bar(bins[:-1], c_hist/(1200000/40000),color="grey")
     plt.bar(bins[:-1], hist,color="black")
     plt.title('Histogram Normal and cumlative')
-    fig.savefig("fognoiseHis.png")
+    fig.savefig("histograms/fognoiseHis.png")
     plt.show()
     
 
@@ -77,7 +77,7 @@ def hist_fogNoise():
       
   
 def meanVSgauss():
-    img = cv2.imread('cameraman.png')
+    img = cv2.imread('imagescameraman.png')
     mean=cv2.blur(img,(5,5))
     gauss=cv2.GaussianBlur(img,(5,5),0)
     
@@ -114,7 +114,7 @@ def selective_median_filtering():
     print ("Post-enhancement Running Time:", round(time()-t0, 3), "s")
     f, axarr = plt.subplots(1,3)
 
-    axarr[0].imshow(cv2.imread('fognoise.png',cv2.IMREAD_GRAYSCALE),cmap='gray')
+    axarr[0].imshow(cv2.imread('images/fognoise.png',cv2.IMREAD_GRAYSCALE),cmap='gray')
     axarr[1].imshow(img,cmap='gray')
     axarr[2].imshow(img_cond,cmap='gray')
 
@@ -129,7 +129,7 @@ def selective_median_filtering():
     
     
 def median_histogram():
-    img = cv2.imread('fognoise.png',cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('images/fognoise.png',cv2.IMREAD_GRAYSCALE)
     median = cv2.medianBlur(img,5)
     f, axarr = plt.subplots(1,4)
     hist,bins = np.histogram(img,256,[0,256])
@@ -141,7 +141,7 @@ def median_histogram():
     plt.show()
     
 def median_filter_5(cond): 
-    img = cv2.imread('fognoise.png',cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('images/fognoise.png',cv2.IMREAD_GRAYSCALE)
     img=np.array(img)
     count_c=0
     count=0
@@ -181,7 +181,7 @@ def p(pixel,maxv,minv):
 
 def contrast_equalization():
   
-  img = cv2.imread('frostfog.png',cv2.IMREAD_GRAYSCALE)
+  img = cv2.imread('images/frostfog.png',cv2.IMREAD_GRAYSCALE)
   #equlaiztion
   equ = cv2.equalizeHist(img)
   #contrast stretching
@@ -206,9 +206,9 @@ def contrast_equalization():
     
   plt.show()
   
-def diff_bonus():
- img_original = cv2.imread("treeM.png",cv2.IMREAD_GRAYSCALE) 
- img = cv2.imread("tree.png",cv2.IMREAD_GRAYSCALE) 
+def diff_images():
+ img_original = cv2.imread("images/treeM.png",cv2.IMREAD_GRAYSCALE) 
+ img = cv2.imread("images/tree.png",cv2.IMREAD_GRAYSCALE) 
  mystery=img_original-img
  plt.imshow(mystery,cmap="gray")
  plt.show()
@@ -223,6 +223,6 @@ def diff_bonus():
 #selective_median_filtering()
 #median_histogram()
 #contrast_equalization()
-diff_bonus()
+diff_images()
     
 
