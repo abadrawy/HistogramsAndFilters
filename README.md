@@ -46,8 +46,6 @@ The output images scale utilizing the full range from 0 to 255.
 Also, the histograms for both images is calculated.
 
 # Libraries
-opencv2
-
-numpy
-
-matplotlib
+* opencv2
+* numpy
+* matplotlib
