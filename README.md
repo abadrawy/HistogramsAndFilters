@@ -38,8 +38,11 @@ The result of applying a 5 x 5 median filter on the Fog and Noise image is as sh
 
 # Contrast Stretching and Histogram Equalization
 Implemented the techniques of contrast stretching and histogram equalization.
-Both techniques are to be applied on the Frost Fog image shown below.
+
+Both techniques are to be applied on the Fog image.
+
 The output images scale utilizing the full range from 0 to 255.
+
 Also, the histograms for both images is calculated.
 
 # Libraries
